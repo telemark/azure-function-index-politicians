@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "axios": "0.18.0",
+    "then-sleep": "^1.0.1",
     "uuid-random": "1.0.6"
   }
 }

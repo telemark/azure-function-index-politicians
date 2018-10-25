@@ -1,3 +1,4 @@
+const sleep = require('then-sleep')
 const getData = require('../lib/get-data')
 const repackPoliticians = require('../lib/repack-politician')
 const prepareIndex = require('../lib/prepare-index')
@@ -12,6 +13,7 @@ module.exports = async function (context) {
     const deleteMessage = { id: deleteIndex.id, action: 'delete', payload: deleteIndex }
     context.log(`adds deleteIndex to queue`)
     context.bindings.mySbQueue.push(deleteMessage)
+    await sleep(10000)
     context.log(`repacks data adds indexes to queue`)
     data
       .map(repackPoliticians)
