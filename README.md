@@ -1,2 +1,7 @@
 # azure-function-index-politicians
-Function for indexing politicians
+
+Azure function for indexing politicians
+
+## License
+
+[MIT](LICENSE)
