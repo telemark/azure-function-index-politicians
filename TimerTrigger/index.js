@@ -1,5 +1,5 @@
-const sleep = require('then-sleep')
 const getData = require('../lib/get-data')
+const wakeupService = require('../lib/wakeup-service')
 const repackPoliticians = require('../lib/repack-politician')
 const prepareIndex = require('../lib/prepare-index')
 
@@ -8,12 +8,13 @@ module.exports = async function (context) {
 
   if (data.length > 0) {
     context.log(`Got data - ${data.length}`)
+    const service = await wakeupService(context)
+    context.log(`Service awake: ${service ? 'yes' : 'no'}`)
     context.bindings.mySbQueue = []
     const deleteIndex = prepareIndex({})
     const deleteMessage = { id: deleteIndex.id, action: 'delete', payload: deleteIndex }
     context.log(`adds deleteIndex to queue`)
     context.bindings.mySbQueue.push(deleteMessage)
-    await sleep(10000)
     context.log(`repacks data adds indexes to queue`)
     data
       .map(repackPoliticians)
