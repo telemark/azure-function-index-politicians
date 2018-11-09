@@ -11,7 +11,7 @@ module.exports = async function (context) {
     context.log(`Got data - ${data.length}`)
     const service = await wakeupService(context)
     context.log(`Service awake: ${service ? 'yes' : 'no'}`)
-    const result = deleteIndex(context)
+    const result = await deleteIndex(context)
     context.log(`index deleted ${JSON.stringify(result)}`)
     context.log(`repacks data adds indexes to queue`)
     context.bindings.mySbQueue = data

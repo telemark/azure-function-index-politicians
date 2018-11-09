@@ -12,7 +12,7 @@
       "type": "serviceBus",
       "direction": "out",
       "queueName": "testqueue",
-      "connection": "testsearchindex_SERVICEBUS"
+      "connection": "SERVICEBUS_CONNECTION"
     }
   ]
 }
