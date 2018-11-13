@@ -17,7 +17,7 @@ module.exports = async function (context) {
     context.bindings.mySbQueue = data
       .map(repackPoliticians)
       .map(prepareIndex)
-      .map(item => Object.assign({}, { id: item.id, action: 'add', payload: item }))
+      .map(item => Object.assign({}, { id: item.id, payload: item }))
   } else {
     context.log(`Nothing to index`)
   }
